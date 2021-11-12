@@ -24,6 +24,7 @@ export function ButtonCTA({ label, icon, href, ...rest }: ButtonCTAProps) {
         px='6'
         py='4'
         mt={['10', '10', '10', '0']}
+        {...rest}
       >
         {label}
       </ChakraButton>

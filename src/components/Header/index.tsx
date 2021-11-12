@@ -22,8 +22,7 @@ export function Header() {
       >
         <Logo />
 
-        {isWideVersion && <NavMenu />}
-        {!isWideVersion && <CustomDrawer />}
+        {isWideVersion ? <NavMenu /> : <CustomDrawer />}
       </Flex>
     </Flex>
   );
