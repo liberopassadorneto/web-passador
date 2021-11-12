@@ -1,9 +1,11 @@
 import {
   Box,
+  BoxProps,
   Heading as ChakraHeading,
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 type FeatureItemProps = {
@@ -14,6 +16,8 @@ type FeatureItemProps = {
   icon: string;
   isRight?: boolean;
 };
+
+export const MotionBox = motion<BoxProps>(Box);
 
 export function FeaturesItem({
   title,
@@ -30,12 +34,18 @@ export function FeaturesItem({
   return (
     <>
       {!isRight && isWideVersion && (
-        <Box w={['220px', '400px', '300px', '440px']}>
+        <MotionBox
+          w={['220px', '400px', '300px', '440px']}
+          drag='x'
+          dragConstraints={{ left: -100, right: 100 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           <img
             src={`${process.env.PUBLIC_URL}/assets/svg/${icon}.svg`}
             alt={icon}
           />
-        </Box>
+        </MotionBox>
       )}
       <Box px={['4', '0', '0', '0', '0']} mx='auto'>
         <Text
@@ -64,9 +74,15 @@ export function FeaturesItem({
         </Text>
       </Box>
       {isRight && isWideVersion && (
-        <Box w={['220px', '400px', '300px', '440px']}>
+        <MotionBox
+          w={['220px', '400px', '300px', '440px']}
+          drag='x'
+          dragConstraints={{ left: -100, right: 100 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           <img src={`../assets/svg/${icon}.svg`} alt={icon}></img>
-        </Box>
+        </MotionBox>
       )}
     </>
   );
